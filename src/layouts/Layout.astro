@@ -13,14 +13,27 @@ const { title, description } = Astro.props;
 
 <html lang="en">
   <head>
+    <SEO
+      title={title}
+      description={description}
+      openGraph={{
+        basic: {
+          title: "La Postre Shop",
+          type: "website",
+          image:
+            "https://uploads-ssl.webflow.com/601d975f2c3c6201895ea758/602c73003ec1dbc73dd1deb6_La%20Postreria%2077%20Logo.jpg",
+        },
+      }}
+    />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="stylesheet" href="../fonts.css" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
     <SEO title={title} description={description} />
   </head>
-  <body class="text-sm font-light">
+  <body class="bg-dark text-sm font-light text-light">
     <Navbar />
     <main class="min-h-[85vh]">
       <slot />

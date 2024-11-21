@@ -8,6 +8,14 @@ export default {
   theme: {
     screens,
     fontSize,
+    fontFamily: {
+      sans: ["Objectivity", "sans-serif"],
+    },
+    colors: {
+      dark: "#141414",
+      light: "#FAF8F4",
+      brand: "#E0AA3E",
+    },
     extend: {},
   },
   plugins: [fluid],
