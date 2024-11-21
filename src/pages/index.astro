@@ -1,16 +1,57 @@
 ---
-
+import Layout from "../layouts/Layout.astro";
+import Section from "../components/Section.astro";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout title="Astro Starter" description="A minimal Astro Starter template.">
+  <Section tag="header">
+    <h1 class="text-lg font-normal">
+      Use this as a starting point for your projects.
+    </h1>
+    <p>This temlate includes the following technologies:</p>
+    <ul class="list-inside list-disc">
+      <li>
+        [Astro]<a
+          href="https://astro.build/"
+          class="text-sky-600 underline hover:text-sky-500"
+          >(https://astro.build/)</a>
+      </li>
+      <li>
+        [Astro Icon]<a
+          href="https://github.com/astro-community/astro-icon"
+          class="text-sky-600 underline hover:text-sky-500"
+          >(https://github.com/astro-community/astro-icon)</a>
+      </li>
+      <li>
+        [Astro SEO]<a
+          href="https://github.com/brillout/astro-seo"
+          class="text-sky-600 underline hover:text-sky-500"
+          >(https://github.com/brillout/astro-seo)</a>
+      </li>
+      <li>
+        [TailwindCSS]<a
+          href="https://tailwindcss.com/"
+          class="text-sky-600 underline hover:text-sky-500"
+          >(https://tailwindcss.com/)</a>
+      </li>
+      <li>
+        [Fluid Tailwind]<a
+          href="https://github.com/FluidUI/fluid-tailwind"
+          class="text-sky-600 underline hover:text-sky-500"
+          >(https://github.com/FluidUI/fluid-tailwind)</a>
+      </li>
+      <li>
+        [Prettier]<a
+          href="https://prettier.io/"
+          class="text-sky-600 underline hover:text-sky-500"
+          >(https://prettier.io/)</a>
+      </li>
+      <li>
+        [TypeScript]<a
+          href="https://www.typescriptlang.org/"
+          class="text-sky-600 underline hover:text-sky-500"
+          >(https://www.typescriptlang.org/)</a>
+      </li>
+    </ul>
+  </Section>
+</Layout>
