@@ -1,0 +1,48 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Section from "../components/Section.astro";
+---
+
+<Layout
+  title="Signup | La Postre Shop"
+  description="Date de alta en La Postre Shop"
+>
+  <Section tag="header">
+    <form class="flex flex-col gap-1">
+      <label for="email">E-mail</label>
+      <input
+        class="mb-4 min-h-9 px-4 text-dark focus:outline-brand"
+        id="email"
+        required
+        type="email"
+        name="email"
+      />
+      <label for="password">Password</label>
+      <input
+        class="mb-4 min-h-9 px-4 text-dark focus:outline-brand"
+        id="password"
+        required
+        type="password"
+        name="password"
+      />
+      <button
+        class="rounded-sm border border-light border-opacity-25 bg-light bg-opacity-5 px-4 py-2 hover:border-opacity-50 hover:bg-opacity-15"
+        >Crear Cuenta</button
+      >
+    </form>
+  </Section>
+</Layout>
+
+<script>
+  import { actions } from "astro:actions";
+  import { navigate } from "astro:transitions/client";
+
+  const form = document.querySelector("form");
+  form?.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    const formData = new FormData(form);
+    const { error } = await actions.users.signup(formData);
+    if (error) alert(error);
+    else navigate("/success");
+  });
+</script>

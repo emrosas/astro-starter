@@ -1,6 +1,7 @@
 import { sessions } from "./sessions";
+import { users } from "./users";
 
 export const server = {
-  // action declarations
+  users,
   sessions,
 };

@@ -1,0 +1,15 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Section from "../components/Section.astro";
+const sessionCookie = Astro.cookies.get("session");
+console.log(sessionCookie);
+---
+
+<Layout
+  title="Success | La Postre Shop"
+  description="Date de alta en La Postre Shop"
+>
+  <Section tag="header">
+    <h1>Success</h1>
+  </Section>
+</Layout>

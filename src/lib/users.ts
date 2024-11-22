@@ -1,7 +1,8 @@
 import { db, eq, Users } from "astro:db";
-import { type User } from "../../db/config";
+import { type Session, type User } from "../../db/config";
 import { Argon2id } from "oslo/password";
-import { random } from "oslo/crypto";
+import { generateRandomInteger, random } from "oslo/crypto";
+import { createSession, generateSessionToken } from "./sessions";
 
 const hasher = new Argon2id();
 
@@ -16,17 +17,18 @@ export async function verifyPassword(
   return await hasher.verify(hashedPassword, password);
 }
 
-export async function createUser(
+export async function signup(
   email: string,
   password: string,
-): Promise<User> {
+): Promise<Session | null> {
   const user: User = {
-    id: random(),
+    id: generateRandomInteger(32),
     email,
     password: await hashPassword(password),
   };
   await db.insert(Users).values(user);
-  return user;
+  const session = await createSession(generateSessionToken(), user.id);
+  return session;
 }
 
 export async function validateUserCredentials(
@@ -39,6 +41,19 @@ export async function validateUserCredentials(
   }
   if (await verifyPassword(user[0].password, password)) {
     return user[0];
+  }
+  return null;
+}
+
+export async function login(
+  email: string,
+  password: string,
+): Promise<Session | null> {
+  const user = await validateUserCredentials(email, password);
+  if (user) {
+    const token = generateSessionToken();
+    const session = await createSession(token, user.id);
+    return session;
   }
   return null;
 }
