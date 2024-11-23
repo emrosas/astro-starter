@@ -6,7 +6,7 @@ import Section from "../components/Section.astro";
 ---
 
 <Layout
-  title="Crear Cuenta | La Postre Shop"
+  title="Iniciar Sesión | La Postre Shop"
   description="Date de alta en La Postre Shop"
 >
   <Section tag="header">
@@ -30,12 +30,12 @@ import Section from "../components/Section.astro";
         />
         <button
           class="mt-4 rounded-sm border border-light border-opacity-25 bg-light bg-opacity-5 px-4 py-2 hover:border-opacity-50 hover:bg-opacity-15"
-          >Crear Cuenta</button
+          >Iniciar Sesión</button
         >
       </form>
       <p class="mt-4 text-center">
-        ¿Ya tienes una cuenta?
-        <a href="/login" class="ml-1 text-brand">Inicia Sesión</a>
+        ¿No tienes una cuenta?
+        <a href="/signup" class="ml-1 text-brand">Crear Cuenta</a>
       </p>
     </div>
   </Section>
@@ -49,7 +49,7 @@ import Section from "../components/Section.astro";
   form?.addEventListener("submit", async (event) => {
     event.preventDefault();
     const formData = new FormData(form);
-    const { error } = await actions.users.signup(formData);
+    const { error } = await actions.users.login(formData);
     if (error) alert(error);
     else navigate("/");
   });

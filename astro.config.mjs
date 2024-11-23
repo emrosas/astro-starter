@@ -7,8 +7,11 @@ import icon from "astro-icon";
 
 import db from "@astrojs/db";
 
+import cloudflare from "@astrojs/cloudflare";
+
 // https://astro.build/config
 export default defineConfig({
   output: "server",
   integrations: [tailwind(), icon(), db()],
+  adapter: cloudflare(),
 });

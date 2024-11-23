@@ -1,8 +1,24 @@
 ---
-
+const session = Astro.url.pathname;
 ---
 
 <nav class="mx-auto flex max-w-7xl items-center justify-between px-16 py-4">
   <a href="/" class="text-2xl font-medium">La Postre Shop</a>
-  <a href="/" class="hover:text-brand underline">Pasteles</a>
+  {
+    session === "/login" || session === "/signup" ? null : (
+      <button id="logout">Cerrar Sesión</button>
+    )
+  }
 </nav>
+
+<script>
+  import { actions } from "astro:actions";
+  const logout = document.querySelector("#logout");
+  if (logout) {
+    logout.addEventListener("click", async () => {
+      const { data, error } = await actions.users.logout();
+      if (error) alert(error);
+      else window.location.href = data.redirect;
+    });
+  }
+</script>

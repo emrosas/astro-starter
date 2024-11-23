@@ -1,8 +1,10 @@
-import { db, eq, Users } from "astro:db";
+import { db, eq, Sessions, Users } from "astro:db";
 import { type Session, type User } from "../../db/config";
 import { Argon2id } from "oslo/password";
-import { generateRandomInteger, random } from "oslo/crypto";
+import { generateRandomInteger } from "oslo/crypto";
 import { createSession, generateSessionToken } from "./sessions";
+import type { APIContext } from "astro";
+import { deleteSessionTokenCookie } from "./cookies";
 
 const hasher = new Argon2id();
 
@@ -21,14 +23,33 @@ export async function signup(
   email: string,
   password: string,
 ): Promise<Session | null> {
-  const user: User = {
-    id: generateRandomInteger(32),
-    email,
-    password: await hashPassword(password),
-  };
-  await db.insert(Users).values(user);
-  const session = await createSession(generateSessionToken(), user.id);
-  return session;
+  try {
+    const userId = generateRandomInteger(32);
+    const hashedPassword = await hashPassword(password);
+
+    const user: User = {
+      id: userId,
+      email,
+      password: hashedPassword,
+    };
+
+    await db.insert(Users).values(user);
+
+    const sessionToken = generateSessionToken();
+    const session = await createSession(sessionToken, userId);
+    //
+    // Log detailed information
+    console.log("Signup process:", {
+      userId,
+      email,
+      sessionToken,
+      session,
+    });
+    return session;
+  } catch (error) {
+    console.error("Error during signup:", error);
+    return null;
+  }
 }
 
 export async function validateUserCredentials(

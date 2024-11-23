@@ -1,7 +1,7 @@
 import { defineMiddleware } from "astro:middleware";
 import { validateSessionToken } from "./lib/sessions";
-import { deleteSessionTokenCookie, setSessionTokenCookie } from "./lib/cookies";
 
+// Middleware for session validation
 export const onRequest = defineMiddleware(async (context, next) => {
   const token = context.cookies.get("session")?.value ?? null;
 
@@ -11,14 +11,31 @@ export const onRequest = defineMiddleware(async (context, next) => {
     return next();
   }
 
-  const { session, user } = await validateSessionToken(token);
-  if (session != null) {
-    setSessionTokenCookie(context, token, session.expiresAt);
-  } else {
-    deleteSessionTokenCookie(context);
+  try {
+    const { session, user } = await validateSessionToken(token);
+
+    if (!session || !user) {
+      // If session or user is invalid, clear the cookie
+      context.cookies.delete("session", {
+        path: "/",
+      });
+
+      context.locals.user = null;
+      context.locals.session = null;
+      return context.redirect("/login");
+    }
+
+    context.locals.session = session;
+    context.locals.user = user;
+  } catch {
+    // Clear cookie on any validation error
+    context.cookies.delete("session", {
+      path: "/",
+    });
+
+    context.locals.user = null;
+    context.locals.session = null;
   }
 
-  context.locals.session = session;
-  context.locals.user = user;
   return next();
 });
