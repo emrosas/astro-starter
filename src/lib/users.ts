@@ -20,6 +20,8 @@ export async function verifyPassword(
 export async function signup(
   email: string,
   password: string,
+  name: string,
+  phone: string,
 ): Promise<Session | null> {
   try {
     const userId = generateRandomInteger(32);
@@ -29,6 +31,9 @@ export async function signup(
       id: userId,
       email,
       password: hashedPassword,
+      name,
+      phone,
+      createdAt: new Date(),
     };
 
     await db.insert(Users).values(user);

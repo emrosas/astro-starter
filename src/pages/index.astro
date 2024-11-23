@@ -10,10 +10,8 @@ import Section from "../components/Section.astro";
   description="Ordena un pastel y recogelo en tu sucursal de La Postre de preferencia."
 >
   <Section tag="header">
-    <h1>{Astro.locals.user?.email}</h1>
-    <button
-      class="rounded-sm border border-light border-opacity-25 bg-light bg-opacity-5 px-4 py-2"
-      >Generate Token</button
-    >
+    <h1 class="capitalize">
+      Hola {Astro.locals.user?.name}
+    </h1>
   </Section>
 </Layout>

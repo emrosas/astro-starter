@@ -13,6 +13,22 @@ import Section from "../components/Section.astro";
     <div class="mx-auto mt-24 max-w-xl">
       <h1 class="mb-8 text-center text-2xl font-normal">Crear Cuenta</h1>
       <form class="flex flex-col gap-1">
+        <label for="name">Nombre</label>
+        <input
+          class="mb-4 min-h-9 rounded-sm px-4 text-dark focus:outline-brand"
+          id="name"
+          required
+          type="text"
+          name="name"
+        />
+        <label for="phone">Teléfono</label>
+        <input
+          class="mb-4 min-h-9 rounded-sm px-4 text-dark focus:outline-brand"
+          id="phone"
+          required
+          type="tel"
+          name="phone"
+        />
         <label for="email">E-mail</label>
         <input
           class="mb-4 min-h-9 rounded-sm px-4 text-dark focus:outline-brand"

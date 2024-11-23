@@ -15,9 +15,11 @@ export const users = {
     input: z.object({
       email: z.string().email(),
       password: z.string().min(8).max(128),
+      name: z.string().min(3).max(64).toLowerCase(),
+      phone: z.string().regex(/^\d{10}$/),
     }),
-    handler: async ({ email, password }, context) => {
-      const session = await signup(email, password);
+    handler: async ({ email, password, name, phone }, context) => {
+      const session = await signup(email, password, name, phone);
       if (session === null) {
         return {
           success: false,
