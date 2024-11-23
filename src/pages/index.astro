@@ -3,6 +3,11 @@ if (!Astro.locals.session) return Astro.redirect("/login");
 
 import Layout from "../layouts/Layout.astro";
 import Section from "../components/Section.astro";
+import { Image } from "astro:assets";
+import { db } from "astro:db";
+import { Pasteles } from "astro:db";
+
+const pasteles = await db.select().from(Pasteles);
 ---
 
 <Layout
@@ -10,8 +15,26 @@ import Section from "../components/Section.astro";
   description="Ordena un pastel y recogelo en tu sucursal de La Postre de preferencia."
 >
   <Section tag="header">
-    <h1 class="capitalize">
+    <h1 class="text-2xl capitalize">
       Hola {Astro.locals.user?.name}
     </h1>
+    <p>Realiza tu pedido y recogelo en tu sucursal de preferencia.</p>
+    <ul class="mt-8 grid grid-cols-4 gap-4">
+      {
+        pasteles.map((pastel) => (
+          <li class="flex flex-col">
+            <Image
+              src={pastel.image}
+              alt={pastel.name}
+              width={320}
+              height={320}
+              class="aspect-square overflow-clip rounded-md object-cover"
+            />
+            <h3 class="mb-1 mt-3 text-xl capitalize">{pastel.name}</h3>
+            <p class="text-xs opacity-60">{pastel.description}</p>
+          </li>
+        ))
+      }
+    </ul>
   </Section>
 </Layout>

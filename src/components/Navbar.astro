@@ -1,12 +1,15 @@
 ---
-const session = Astro.url.pathname;
+const { pathname } = Astro.url;
+
+import Button from "./ui/Button.astro";
+import { Icon } from "astro-icon/components";
 ---
 
 <nav class="mx-auto flex max-w-7xl items-center justify-between px-16 py-4">
-  <a href="/" class="text-2xl font-medium">La Postre Shop</a>
+  <a href="/" class="text-2xl font-medium"><Icon name="logo" /></a>
   {
-    session === "/login" || session === "/signup" ? null : (
-      <button id="logout">Cerrar Sesión</button>
+    pathname === "/login" || pathname === "/signup" ? null : (
+      <Button id="logout">Cerrar Sesión</Button>
     )
   }
 </nav>

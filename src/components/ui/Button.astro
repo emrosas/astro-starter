@@ -1,9 +1,14 @@
 ---
+type Props = {
+  id?: string;
+};
 
+const { id } = Astro.props;
 ---
 
 <button
-  class="mt-4 rounded-sm border border-light border-opacity-25 bg-light bg-opacity-5 px-4 py-2 transition hover:border-opacity-50 hover:bg-opacity-15"
+  id={id}
+  class="mt-4 rounded-sm border border-light border-opacity-25 bg-light bg-opacity-5 px-4 pb-2 pt-[10px] transition duration-75 ease-out hover:border-brand hover:border-opacity-50 hover:bg-brand hover:bg-opacity-15 hover:text-brand-2 focus:outline-brand"
 >
   <slot />
 </button>

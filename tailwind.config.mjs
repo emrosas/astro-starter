@@ -15,6 +15,7 @@ export default {
       dark: "#141414",
       light: "#FAF8F4",
       brand: "#E0AA3E",
+      "brand-2": "#FFCF70",
     },
     extend: {},
   },
