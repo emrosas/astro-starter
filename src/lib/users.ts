@@ -1,10 +1,8 @@
-import { db, eq, Sessions, Users } from "astro:db";
+import { db, eq, Users } from "astro:db";
 import { type Session, type User } from "../../db/config";
 import { Argon2id } from "oslo/password";
 import { generateRandomInteger } from "oslo/crypto";
 import { createSession, generateSessionToken } from "./sessions";
-import type { APIContext } from "astro";
-import { deleteSessionTokenCookie } from "./cookies";
 
 const hasher = new Argon2id();
 
@@ -56,12 +54,16 @@ export async function validateUserCredentials(
   email: string,
   password: string,
 ): Promise<User | null> {
-  const user = await db.select().from(Users).where(eq(Users.email, email));
-  if (user.length < 1) {
+  const user = await db
+    .select()
+    .from(Users)
+    .where(eq(Users.email, email))
+    .get();
+  if (!user) {
     return null;
   }
-  if (await verifyPassword(user[0].password, password)) {
-    return user[0];
+  if (await verifyPassword(user.password, password)) {
+    return user;
   }
   return null;
 }
@@ -70,11 +72,16 @@ export async function login(
   email: string,
   password: string,
 ): Promise<Session | null> {
-  const user = await validateUserCredentials(email, password);
-  if (user) {
-    const token = generateSessionToken();
-    const session = await createSession(token, user.id);
-    return session;
+  try {
+    const user = await validateUserCredentials(email, password);
+    if (user) {
+      const token = generateSessionToken();
+      const session = await createSession(token, user.id);
+      return session;
+    }
+    return null;
+  } catch (error) {
+    console.error("Error during login:", error);
+    return null;
   }
-  return null;
 }

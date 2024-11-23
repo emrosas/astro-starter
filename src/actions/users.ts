@@ -74,9 +74,26 @@ export const users = {
         session.id,
         session.expiresAt,
       );
+
+      const { user } = await validateSessionToken(session.id);
+
+      if (user === null) {
+        return {
+          success: false,
+          message: "Error logging in",
+        };
+      }
+
+      context.locals.session = session;
+      context.locals.user = user;
+
       return {
         success: true,
         message: "User logged in",
+        user: {
+          id: user.id,
+          email: user.email,
+        },
       };
     },
   }),

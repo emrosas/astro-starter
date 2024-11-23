@@ -11,6 +11,7 @@ import Section from "../components/Section.astro";
 >
   <Section tag="header">
     <div class="mx-auto mt-24 max-w-xl">
+      <h1 class="mb-8 text-center text-2xl font-normal">Iniciar Sesión</h1>
       <form class="flex flex-col gap-1">
         <label for="email">E-mail</label>
         <input
@@ -50,7 +51,7 @@ import Section from "../components/Section.astro";
     event.preventDefault();
     const formData = new FormData(form);
     const { error } = await actions.users.login(formData);
-    if (error) alert(error);
+    if (error) alert("Error al iniciar sesión");
     else navigate("/");
   });
 </script>
