@@ -1,0 +1,18 @@
+---
+import Section from "../../components/Section.astro";
+import AdminLayout from "../../layouts/AdminLayout.astro";
+
+if (!Astro.locals.session) return Astro.redirect("/login");
+if (Astro.locals.user?.role != "admin") {
+  return Astro.redirect("/login");
+}
+
+// Set headers to prevent indexing
+Astro.response.headers.set("X-Robots-Tag", "noindex, nofollow");
+---
+
+<AdminLayout>
+  <Section tag="header">
+    <h1>Success</h1>
+  </Section>
+</AdminLayout>

@@ -1,5 +1,6 @@
 ---
 if (!Astro.locals.session) return Astro.redirect("/login");
+const role = Astro.locals.user?.role;
 
 import Layout from "../layouts/Layout.astro";
 import Section from "../components/Section.astro";
@@ -15,10 +16,22 @@ const pasteles = await db.select().from(Pasteles);
   description="Ordena un pastel y recogelo en tu sucursal de La Postre de preferencia."
 >
   <Section tag="header">
-    <h1 class="text-2xl capitalize">
-      Hola {Astro.locals.user?.name}
-    </h1>
-    <p>Realiza tu pedido y recogelo en tu sucursal de preferencia.</p>
+    <div>
+      <h1 class="inline text-2xl capitalize">
+        Hola {Astro.locals.user?.name}
+        <span>👋</span>
+      </h1>
+      {
+        role === "admin" && (
+          <span class="ml-2 inline rounded-sm border border-brand bg-brand bg-opacity-15 px-2 pb-[2px] pt-1 text-xs text-brand-2">
+            Admin
+          </span>
+        )
+      }
+      <p class="mt-2">
+        Realiza tu pedido y recogelo en tu sucursal de preferencia.
+      </p>
+    </div>
     <ul class="mt-8 grid grid-cols-4 gap-4">
       {
         pasteles.map((pastel) => (

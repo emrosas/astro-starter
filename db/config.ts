@@ -7,6 +7,7 @@ const Users = defineTable({
     password: column.text(),
     name: column.text(),
     phone: column.text(),
+    role: column.text({ default: "user" }),
     createdAt: column.date({ default: new Date() }),
   },
 });
@@ -17,6 +18,7 @@ export type User = {
   password: string;
   name: string;
   phone: string;
+  role: "admin" | "user";
   createdAt: Date;
 };
 

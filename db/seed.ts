@@ -5,12 +5,24 @@ const hasher = new Argon2id();
 
 // https://astro.build/db/seed
 export default async function seed() {
-  await db.insert(Users).values({
-    email: "me@mail.com",
-    password: await hasher.hash("holahola"),
-    name: "John Doe",
-    phone: "9998887777",
-  });
+  await db.insert(Users).values([
+    {
+      email: "user@mail.com",
+      password: await hasher.hash("useraccount"),
+      name: "Juanito Perez",
+      phone: "9998887777",
+      role: "user",
+      createdAt: new Date(),
+    },
+    {
+      email: "admin@mail.com",
+      password: await hasher.hash("adminaccount"),
+      name: "Pancho Lopez",
+      phone: "9998887777",
+      role: "admin",
+      createdAt: new Date(),
+    },
+  ]);
 
   await db.insert(Pasteles).values([
     {
