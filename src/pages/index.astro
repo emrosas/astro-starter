@@ -8,8 +8,7 @@ if (Astro.locals.user) {
 import Layout from "../layouts/Layout.astro";
 import Section from "../components/Section.astro";
 import { Image } from "astro:assets";
-import { db } from "astro:db";
-import { Pasteles } from "astro:db";
+import { db, Pasteles } from "astro:db";
 
 const pasteles = await db.select().from(Pasteles);
 ---

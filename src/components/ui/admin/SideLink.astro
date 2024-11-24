@@ -1,0 +1,12 @@
+---
+interface Props {
+  href: string;
+  pathname: string;
+  label: string;
+}
+const { href = "/admin/", pathname, label } = Astro.props;
+---
+
+<li>
+  <a href={href} class={pathname === href ? "text-brand" : ""}>{label}</a>
+</li>

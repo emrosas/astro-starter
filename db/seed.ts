@@ -7,17 +7,21 @@ const hasher = new Argon2id();
 export default async function seed() {
   await db.insert(Users).values([
     {
+      id: 1,
       email: "user@mail.com",
       password: await hasher.hash("useraccount"),
-      name: "Juanito Perez",
+      name: "Juanito",
+      lastName: "Perez",
       phone: "9998887777",
       role: "user",
       createdAt: new Date(),
     },
     {
+      id: 2,
       email: "admin@mail.com",
       password: await hasher.hash("adminaccount"),
-      name: "Pancho Lopez",
+      name: "Pancho",
+      lastName: "Lopez",
       phone: "9998887777",
       role: "admin",
       createdAt: new Date(),

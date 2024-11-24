@@ -14,14 +14,28 @@ import Button from "../components/ui/Button.astro";
     <div class="mx-auto mt-24 max-w-xl">
       <h1 class="mb-8 text-center text-2xl font-normal">Crear Cuenta</h1>
       <form class="flex flex-col gap-1">
-        <label for="name">Nombre</label>
-        <input
-          class="mb-4 min-h-9 rounded-sm px-4 text-dark focus:outline-brand"
-          id="name"
-          required
-          type="text"
-          name="name"
-        />
+        <div class="grid grid-cols-2 gap-4">
+          <div class="flex flex-col">
+            <label for="name">Nombre</label>
+            <input
+              class="mb-4 min-h-9 rounded-sm px-4 text-dark focus:outline-brand"
+              id="name"
+              required
+              type="text"
+              name="name"
+            />
+          </div>
+          <div class="flex flex-col">
+            <label for="lastname">Apellido</label>
+            <input
+              class="mb-4 min-h-9 rounded-sm px-4 text-dark focus:outline-brand"
+              id="lastname"
+              required
+              type="text"
+              name="lastname"
+            />
+          </div>
+        </div>
         <label for="phone">Teléfono</label>
         <input
           class="mb-4 min-h-9 rounded-sm px-4 text-dark focus:outline-brand"

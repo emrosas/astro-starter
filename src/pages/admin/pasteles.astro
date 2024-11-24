@@ -12,10 +12,15 @@ Astro.response.headers.set("X-Robots-Tag", "noindex, nofollow");
 import AdminLayout from "../../layouts/AdminLayout.astro";
 import DashboardLayout from "../../layouts/DashboardLayout.astro";
 import Section from "../../components/Section.astro";
+import { db, Pasteles as PastelesTable } from "astro:db";
+
+const pasteles = await db.select().from(PastelesTable);
 ---
 
 <AdminLayout>
   <DashboardLayout page="Pasteles">
-    <Section tag="header" />
+    <Section tag="header">
+      <ul>{pasteles.map((pastel) => <li>{pastel.name}</li>)}</ul>
+    </Section>
   </DashboardLayout>
 </AdminLayout>

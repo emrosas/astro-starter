@@ -21,6 +21,7 @@ export async function signup(
   email: string,
   password: string,
   name: string,
+  lastName: string,
   phone: string,
 ): Promise<Session | null> {
   try {
@@ -32,7 +33,9 @@ export async function signup(
       email,
       password: hashedPassword,
       name,
+      lastName,
       phone,
+      role: "user",
       createdAt: new Date(),
     };
 
