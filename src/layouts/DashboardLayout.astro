@@ -1,0 +1,32 @@
+---
+const pathname = Astro.url.pathname;
+
+interface Props {
+  page: string;
+}
+
+const { page } = Astro.props;
+---
+
+<div class="mx-auto grid max-w-7xl grid-cols-[280px_1fr] px-16">
+  <div>
+    <h1 class="text-2xl capitalize">{page}</h1>
+    <menu class="mt-8">
+      <li>
+        <a
+          href="/admin/pasteles"
+          class={pathname === "/admin/pasteles" ? "text-brand" : ""}>Pasteles</a
+        >
+      </li>
+      <li>
+        <a
+          href="/admin/pedidos"
+          class={pathname === "/admin/pedidos" ? "text-brand" : ""}>Pedidos</a
+        >
+      </li>
+    </menu>
+  </div>
+  <main>
+    <slot />
+  </main>
+</div>

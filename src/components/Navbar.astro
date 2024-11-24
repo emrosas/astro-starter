@@ -1,5 +1,14 @@
 ---
-const { pathname } = Astro.url;
+const pathname = Astro.url.pathname;
+let loggedIn: boolean;
+let role: string | null;
+if (Astro.locals.user) {
+  loggedIn = true;
+  role = Astro.locals.user.role;
+} else {
+  loggedIn = false;
+  role = null;
+}
 
 import Button from "./ui/Button.astro";
 import { Icon } from "astro-icon/components";
@@ -7,11 +16,21 @@ import { Icon } from "astro-icon/components";
 
 <nav class="mx-auto flex max-w-7xl items-center justify-between px-16 py-4">
   <a href="/" class="text-2xl font-medium"><Icon name="logo" /></a>
-  {
-    pathname === "/login" || pathname === "/signup" ? null : (
-      <Button id="logout">Cerrar Sesión</Button>
-    )
-  }
+  <div class="flex items-center gap-4">
+    {role === "admin" && <a href="/admin">Dashboard</a>}
+    {
+      loggedIn && pathname !== "/login" && pathname !== "/signup" && (
+        <Button id="logout">Cerrar Sesión</Button>
+      )
+    }
+    {
+      !loggedIn && pathname !== "/login" && pathname !== "/signup" && (
+        <Button href="/login" id="login">
+          Iniciar Sesión
+        </Button>
+      )
+    }
+  </div>
 </nav>
 
 <script>

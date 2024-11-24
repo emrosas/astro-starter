@@ -3,6 +3,7 @@ if (Astro.locals.session) return Astro.redirect("/");
 
 import Layout from "../layouts/Layout.astro";
 import Section from "../components/Section.astro";
+import Button from "../components/ui/Button.astro";
 ---
 
 <Layout
@@ -37,18 +38,15 @@ import Section from "../components/Section.astro";
           type="email"
           name="email"
         />
-        <label for="password">Password</label>
+        <label for="password">Contraseña</label>
         <input
-          class="mb-4 min-h-9 rounded-sm px-4 text-dark focus:outline-brand"
+          class="mb-8 min-h-9 rounded-sm px-4 text-dark focus:outline-brand"
           id="password"
           required
           type="password"
           name="password"
         />
-        <button
-          class="mt-4 rounded-sm border border-light border-opacity-25 bg-light bg-opacity-5 px-4 py-2 hover:border-opacity-50 hover:bg-opacity-15"
-          >Crear Cuenta</button
-        >
+        <Button>Crear Cuenta</Button>
       </form>
       <p class="mt-4 text-center">
         ¿Ya tienes una cuenta?

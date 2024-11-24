@@ -1,7 +1,10 @@
 ---
-if (!Astro.locals.session) return Astro.redirect("/login");
-const role = Astro.locals.user?.role;
-
+let role: string | null;
+if (Astro.locals.user) {
+  role = Astro.locals.user.role;
+} else {
+  role = null;
+}
 import Layout from "../layouts/Layout.astro";
 import Section from "../components/Section.astro";
 import { Image } from "astro:assets";
