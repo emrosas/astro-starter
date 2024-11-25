@@ -11,11 +11,13 @@ Astro.response.headers.set("X-Robots-Tag", "noindex, nofollow");
 // Component Imports
 import AdminLayout from "../../layouts/AdminLayout.astro";
 import DashboardLayout from "../../layouts/DashboardLayout.astro";
-import Section from "../../components/Section.astro";
 ---
 
 <AdminLayout>
   <DashboardLayout page="Dashboard">
-    <Section tag="header" />
+    <p>
+      Bienvenid@ al dashboard de administración {Astro.locals.user.name}.
+      Selecciona una opción para continuar.
+    </p>
   </DashboardLayout>
 </AdminLayout>

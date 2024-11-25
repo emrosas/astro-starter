@@ -11,15 +11,15 @@ const { page } = Astro.props;
 import SideLink from "../components/ui/admin/SideLink.astro";
 ---
 
-<div class="mx-auto grid max-w-7xl grid-cols-[280px_1fr] px-16">
-  <div>
-    <h1 class="text-2xl capitalize">{page}</h1>
-    <menu class="mt-8">
+<div class="mx-auto mt-8 grid max-w-7xl grid-cols-[280px_1fr] px-16">
+  <div class="">
+    <h1 class="text-xl font-normal">Dashboard</h1>
+    <menu class="mt-8 flex flex-col gap-4">
       <SideLink href="/admin/pasteles" pathname={pathname} label="Pasteles" />
       <SideLink href="/admin/pedidos" pathname={pathname} label="Pedidos" />
     </menu>
   </div>
-  <main>
+  <main class="pt-8">
     <slot />
   </main>
 </div>

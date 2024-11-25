@@ -11,16 +11,31 @@ Astro.response.headers.set("X-Robots-Tag", "noindex, nofollow");
 // Component Imports
 import AdminLayout from "../../layouts/AdminLayout.astro";
 import DashboardLayout from "../../layouts/DashboardLayout.astro";
-import Section from "../../components/Section.astro";
-import { db, Pasteles as PastelesTable } from "astro:db";
 
+// Database
+import { db, Pasteles as PastelesTable } from "astro:db";
 const pasteles = await db.select().from(PastelesTable);
 ---
 
 <AdminLayout>
   <DashboardLayout page="Pasteles">
-    <Section tag="header">
-      <ul>{pasteles.map((pastel) => <li>{pastel.name}</li>)}</ul>
-    </Section>
+    <table class="text-xs">
+      <thead class="border-b border-light border-opacity-50 text-left">
+        <th class="px-4 py-2 font-medium">Nombre</th>
+        <th class="px-4 py-2 font-medium">Descripción</th>
+        <th class="w-1/12 px-4 py-2 font-medium">Anytime</th>
+      </thead>
+      <tbody>
+        {
+          pasteles.map((pastel) => (
+            <tr class="border-b border-light border-opacity-15">
+              <td class="px-4 py-2 font-medium">{pastel.name}</td>
+              <td class="px-4 py-2">{pastel.description}</td>
+              <td class="px-4 py-2">{pastel.anytime ? "Si" : "No"}</td>
+            </tr>
+          ))
+        }
+      </tbody>
+    </table>
   </DashboardLayout>
 </AdminLayout>

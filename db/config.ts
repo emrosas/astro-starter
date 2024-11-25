@@ -77,7 +77,8 @@ const Orders = defineTable({
     id: column.number({ primaryKey: true }),
     userId: column.number({ references: () => Users.columns.id }),
     totalAmount: column.number(),
-    status: column.text(), // 'pending', 'completed', 'cancelled'
+    status: column.text(), // 'Pendiente', 'Completado', 'Cancelado'
+    pickupDate: column.date(),
     createdAt: column.date(),
   },
 });
@@ -86,7 +87,8 @@ export type Order = {
   id: number;
   userId: number;
   totalAmount: number;
-  status: "pending" | "completed" | "cancelled";
+  status: "Pendiente" | "Completado" | "Cancelado";
+  pickupDate: Date;
   createdAt: Date;
 };
 

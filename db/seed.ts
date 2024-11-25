@@ -1,4 +1,4 @@
-import { db, Pasteles, Users } from "astro:db";
+import { db, Orders, Pasteles, Users } from "astro:db";
 import { Argon2id } from "oslo/password";
 
 const hasher = new Argon2id();
@@ -57,6 +57,25 @@ export default async function seed() {
         "Pan de chocolate con chispas de chocolate semiamargo, ganache de chocolate y betún de vainilla a base de Philadelphia.",
       anytime: true,
       image: "https://lapasteleriadelapostreria.com/images/menu/pistache.webp",
+    },
+  ]);
+
+  await db.insert(Orders).values([
+    {
+      id: 54321,
+      userId: 1,
+      totalAmount: 1250,
+      status: "Pendiente",
+      pickupDate: new Date("2024-11-28"),
+      createdAt: new Date(),
+    },
+    {
+      id: 87654,
+      userId: 2,
+      totalAmount: 2500,
+      status: "Cancelado",
+      pickupDate: new Date("2024-11-28"),
+      createdAt: new Date(),
     },
   ]);
 }

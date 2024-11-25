@@ -11,11 +11,94 @@ Astro.response.headers.set("X-Robots-Tag", "noindex, nofollow");
 // Component Imports
 import AdminLayout from "../../layouts/AdminLayout.astro";
 import DashboardLayout from "../../layouts/DashboardLayout.astro";
-import Section from "../../components/Section.astro";
+import Button from "../../components/ui/Button.astro";
+
+// Database
+import { db, eq, Orders } from "astro:db";
+
+// Get date from query parameters
+const dateParam = Astro.url.searchParams.get("date");
+let selectedDate: Date | null = null;
+let pedidos: any[] = [];
+
+// Parse and validate date
+if (dateParam) {
+  try {
+    selectedDate = new Date(dateParam);
+
+    // Ensure it's a valid date
+    if (!isNaN(selectedDate.getTime())) {
+      pedidos = await db
+        .select()
+        .from(Orders)
+        .where(eq(Orders.pickupDate, selectedDate))
+        .all();
+    }
+  } catch (error) {
+    console.error("Invalid date", error);
+  }
+} else {
+  // Default to today's orders if no date specified
+  selectedDate = new Date();
+  pedidos = await db
+    .select()
+    .from(Orders)
+    .where(eq(Orders.pickupDate, selectedDate))
+    .all();
+}
+
+// Format date for input field
+const formatDateForInput = (date: Date) => {
+  return date.toISOString().split("T")[0];
+};
 ---
 
 <AdminLayout>
   <DashboardLayout page="Pedidos">
-    <Section tag="header" />
+    <div class="flex justify-between gap-8">
+      <table class="text-xs">
+        <thead class="border-b border-light border-opacity-50 text-left">
+          <th class="px-4 py-2 font-medium">ID</th>
+          <th class="px-4 py-2 font-medium">Estado</th>
+          <th class="px-4 py-2 font-medium">Pickup</th>
+          <th class="px-4 py-2 font-medium">Realizado</th>
+          <th class="px-4 py-2 font-medium">Total</th>
+        </thead>
+        <tbody>
+          {
+            pedidos.length > 0 ? (
+              pedidos.map((pedido) => (
+                <tr class="border-b border-light border-opacity-15">
+                  <td class="px-4 py-2 font-medium">{pedido.id}</td>
+                  <td class="px-4 py-2">{pedido.status}</td>
+                  <td class="px-4 py-2">
+                    {pedido.pickupDate.toLocaleDateString()}
+                  </td>
+                  <td class="px-4 py-2">
+                    {pedido.createdAt.toLocaleDateString()}
+                  </td>
+                  <td class="px-4 py-2">${pedido.totalAmount}</td>
+                </tr>
+              ))
+            ) : (
+              <tr>
+                <td colspan="3" class="py-2 text-center text-light">
+                  No hay pedidos para la fecha seleccionada.
+                </td>
+              </tr>
+            )
+          }
+        </tbody>
+      </table>
+      <form method="get" class="mb-4 flex items-center gap-4">
+        <input
+          type="date"
+          name="date"
+          value={selectedDate ? formatDateForInput(selectedDate) : ""}
+          class="rounded-sm border p-2 text-dark"
+        />
+        <Button>Filtrar Pedidos</Button>
+      </form>
+    </div>
   </DashboardLayout>
 </AdminLayout>

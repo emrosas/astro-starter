@@ -8,5 +8,10 @@ const { href = "/admin/", pathname, label } = Astro.props;
 ---
 
 <li>
-  <a href={href} class={pathname === href ? "text-brand" : ""}>{label}</a>
+  <a
+    href={href}
+    class={pathname === href
+      ? "text-brand underline"
+      : " hover:opacity-100 opacity-80"}>{label}</a
+  >
 </li>
