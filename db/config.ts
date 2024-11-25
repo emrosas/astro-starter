@@ -97,7 +97,7 @@ const OrderItems = defineTable({
     id: column.number({ primaryKey: true }),
     orderId: column.number({ references: () => Orders.columns.id }),
     cakeId: column.number({ references: () => Pasteles.columns.id }),
-    sizeType: column.text(), // 'Traditional' or 'Anytime'
+    sizeType: column.text(), // 'Tradicional' or 'Anytime'
     quantity: column.number(),
     priceAtPurchase: column.number(), // Price at the time of order
   },

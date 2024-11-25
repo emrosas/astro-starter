@@ -1,12 +1,6 @@
 ---
 const pathname = Astro.url.pathname;
 
-interface Props {
-  page: string;
-}
-
-const { page } = Astro.props;
-
 // Component imports
 import SideLink from "../components/ui/admin/SideLink.astro";
 ---
@@ -17,6 +11,11 @@ import SideLink from "../components/ui/admin/SideLink.astro";
     <menu class="mt-8 flex flex-col gap-4">
       <SideLink href="/admin/pasteles" pathname={pathname} label="Pasteles" />
       <SideLink href="/admin/pedidos" pathname={pathname} label="Pedidos" />
+      <SideLink
+        href="/admin/pedidos/agregar"
+        pathname={pathname}
+        label="Agregar Pedido"
+      />
     </menu>
   </div>
   <main class="pt-8">

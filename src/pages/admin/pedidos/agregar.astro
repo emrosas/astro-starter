@@ -1,0 +1,42 @@
+---
+// Check if user is authenticated
+if (!Astro.locals.session) return Astro.redirect("/login");
+if (Astro.locals.user?.role != "admin") {
+  return Astro.redirect("/login");
+}
+
+// Set headers to prevent indexing
+Astro.response.headers.set("X-Robots-Tag", "noindex, nofollow");
+
+// Component Imports
+import AdminLayout from "../../../layouts/AdminLayout.astro";
+import DashboardLayout from "../../../layouts/DashboardLayout.astro";
+import Button from "../../../components/ui/Button.astro";
+
+// Database
+import { db, Pasteles } from "astro:db";
+
+const pasteles = await db.select().from(Pasteles).all();
+---
+
+<AdminLayout>
+  <DashboardLayout page="Pedidos">
+    <form>
+      <div>
+        <label class="mb-1 block" for="pastel">Pastel</label>
+        <select
+          name="pastel"
+          id="pastel"
+          class="px-3 py-1 font-normal text-dark"
+        >
+          <option value="" disabled selected>Sabor</option>
+          {
+            pasteles.map((pastel) => (
+              <option value={pastel.id}>{pastel.name}</option>
+            ))
+          }
+        </select>
+      </div>
+    </form>
+  </DashboardLayout>
+</AdminLayout>

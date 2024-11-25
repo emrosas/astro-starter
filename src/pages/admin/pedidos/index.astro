@@ -9,9 +9,9 @@ if (Astro.locals.user?.role != "admin") {
 Astro.response.headers.set("X-Robots-Tag", "noindex, nofollow");
 
 // Component Imports
-import AdminLayout from "../../layouts/AdminLayout.astro";
-import DashboardLayout from "../../layouts/DashboardLayout.astro";
-import Button from "../../components/ui/Button.astro";
+import AdminLayout from "../../../layouts/AdminLayout.astro";
+import DashboardLayout from "../../../layouts/DashboardLayout.astro";
+import Button from "../../../components/ui/Button.astro";
 
 // Database
 import { db, eq, Orders } from "astro:db";
@@ -90,7 +90,7 @@ const formatDateForInput = (date: Date) => {
           }
         </tbody>
       </table>
-      <form method="get" class="mb-4 flex items-center gap-4">
+      <form method="get" class="flex items-start gap-4">
         <input
           type="date"
           name="date"
