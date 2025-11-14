@@ -1,0 +1,72 @@
+@import "tailwindcss";
+
+@theme {
+  /* Color variables */
+  --color-brand-50: #fafafa;
+  --color-brand-100: #f2f2f2;
+  --color-brand-200: #d6d6d6;
+  --color-brand-300: #b8b8b8;
+  --color-brand-400: #a3a3a3;
+  --color-brand-500: #5c5c5c;
+  --color-brand-600: #474747;
+  --color-brand-700: #333333;
+  --color-brand-800: #292929;
+  --color-brand-900: #1f1f1f;
+  --color-brand-950: #141414;
+  --color-alt-1: #d83232;
+  --color-alt-2: #ab2121;
+
+  /* Font Variables */
+  --font-body: var(--font-geist);
+
+  /* Text Variables */
+  --text-title-sm: clamp(2rem, 2.05rem + 0.5vw, 2.5rem);
+  --text-title-md: clamp(2.25rem, 2.1rem + 1vw, 3rem);
+  --text-title-lg: clamp(2.75rem, 2.4rem + 1.5vw, 3.5rem);
+  --text-body-sm: clamp(0.875rem, 0.625rem + 0.625vw, 1rem);
+  --text-body-md: clamp(1rem, 0.5rem + 1.25vw, 1.25rem);
+  --text-body-lg: clamp(1.25rem, 0.75rem + 1.25vw, 1.5rem);
+
+  /* Spacing variables */
+  /* Clamps go from 1440px to 640px */
+  --spacing-page: clamp(1.5rem, 0.3rem + 3vw, 3rem);
+  --spacing-gutter: clamp(1.5rem, 1.1rem + 1vw, 2rem);
+  --spacing-double: calc(var(--spacing-page) * 2);
+  --spacing-section-lg: clamp(7.5rem, 5.5rem + 5vw, 10rem);
+  --spacing-section-md: clamp(5rem, 4.2rem + 2vw, 6rem);
+  --spacing-section-sm: clamp(3rem, 2.5rem + 1vw, 4rem);
+}
+
+@custom-variant aria-current (&[aria-current="page"]);
+@custom-variant data-open (&[data-open="true"]);
+
+/* View transitions */
+@view-transition {
+  navigation: auto;
+}
+
+nav {
+  view-transition-name: nav;
+}
+
+body {
+  @apply font-body text-brand-950 bg-white tracking-tight;
+}
+
+h1,
+h2 {
+  @apply leading-tight font-medium;
+}
+
+p {
+  @apply leading-relaxed;
+}
+
+.no-scrollbars {
+  scrollbar-width: none; /* For Firefox */
+  -ms-overflow-style: none; /* For Internet Explorer and Edge */
+}
+
+.no-scrollbars::-webkit-scrollbar {
+  display: none; /* For Chrome, Safari, and Opera */
+}

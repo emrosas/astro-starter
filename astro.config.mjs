@@ -1,11 +1,21 @@
 // @ts-check
-import { defineConfig } from 'astro/config';
+import { defineConfig, fontProviders } from "astro/config";
 
-import tailwind from '@astrojs/tailwind';
-
-import icon from 'astro-icon';
+import tailwindcss from "@tailwindcss/vite";
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [tailwind(), icon()]
+  vite: {
+    plugins: [tailwindcss()],
+  },
+  experimental: {
+    fonts: [
+      {
+        provider: fontProviders.google(),
+        name: "Geist",
+        cssVariable: "--font-geist",
+        weights: [400, 500, 600, 700],
+      },
+    ],
+  },
 });
