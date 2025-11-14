@@ -1,11 +1,53 @@
 ---
-
+// SVGs
+import Logo from '../assets/svg/logo.svg'
 ---
 
-<nav class="p-page gap-gutter flex items-center justify-between">
-  <a
-    href="/"
-    class="rounded-md bg-sky-500 p-4 py-2 text-2xl font-medium text-white"
-    >Astro Starter</a
-  >
+<nav
+  class="px-page gap-gutter fixed inset-x-0 top-0 flex items-center py-6 text-white"
+>
+  <a href="/"><Logo class="size-12 md:size-16" /></a>
+  <ul class="text-body-md gap-gutter hidden flex-wrap font-light md:flex">
+    <li class="group relative">
+      <a href="/#about" class="relative z-10 opacity-75 hover:opacity-100"
+        >About</a
+      >
+      <div
+        aria-hidden="true"
+        class="absolute -inset-x-2 -inset-y-0.5 z-0 rounded-sm bg-white/15 opacity-0 transition group-hover:opacity-100"
+      >
+      </div>
+    </li>
+    <li class="group relative">
+      <a href="/#services" class="relative z-10 opacity-75 hover:opacity-100"
+        >Services</a
+      >
+      <div
+        aria-hidden="true"
+        class="absolute -inset-x-2 -inset-y-0.5 z-0 rounded-sm bg-white/15 opacity-0 transition group-hover:opacity-100"
+      >
+      </div>
+    </li>
+    <li class="group relative">
+      <a href="/#technology" class="relative z-10 opacity-75 hover:opacity-100"
+        >Technology</a
+      >
+      <div
+        aria-hidden="true"
+        class="absolute -inset-x-2 -inset-y-0.5 z-0 rounded-sm bg-white/15 opacity-0 transition group-hover:opacity-100"
+      >
+      </div>
+    </li>
+    <li class="group relative">
+      <a
+        href="/#testimonials"
+        class="relative z-10 opacity-75 hover:opacity-100">Testimonials</a
+      >
+      <div
+        aria-hidden="true"
+        class="absolute -inset-x-2 -inset-y-0.5 z-0 rounded-sm bg-white/15 opacity-0 transition group-hover:opacity-100"
+      >
+      </div>
+    </li>
+  </ul>
 </nav>

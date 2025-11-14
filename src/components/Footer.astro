@@ -1,10 +1,115 @@
 ---
-
+// SVGs
+import LogoHorizontal from '../assets/svg/logo-horizontal.svg'
+import Erre from '../assets/svg/erre.svg'
+// Icons
+import MailIcon from '../assets/svg/icons/mail.svg'
+import PhoneIcon from '../assets/svg/icons/phone.svg'
+import LocationIcon from '../assets/svg/icons/location.svg'
 ---
 
-<footer class="p-page mt-auto flex items-center justify-between">
-  <a href="/" class="font-medium">Minimal Astro Starter Template</a>
-  <a href="https://github.com/emrosas" class="underline hover:text-sky-600"
-    >Created by emrosas</a
-  >
+<footer class="bg-brand-900 mt-auto text-white">
+  <div class="p-page pt-section-sm">
+    <div class="mb-12 flex flex-wrap gap-12">
+      <div>
+        <h4 class="text-body-lg mb-6">Navigation</h4>
+        <ul class="text-body-md gap-gutter flex flex-wrap font-light">
+          <li class="group relative">
+            <a href="/#about" class="relative z-10 opacity-75 hover:opacity-100"
+              >About</a
+            >
+            <div
+              aria-hidden="true"
+              class="absolute -inset-x-2 -inset-y-0.5 z-0 rounded-sm bg-white/15 opacity-0 transition group-hover:opacity-100"
+            >
+            </div>
+          </li>
+          <li class="group relative">
+            <a
+              href="/#services"
+              class="relative z-10 opacity-75 hover:opacity-100">Services</a
+            >
+            <div
+              aria-hidden="true"
+              class="absolute -inset-x-2 -inset-y-0.5 z-0 rounded-sm bg-white/15 opacity-0 transition group-hover:opacity-100"
+            >
+            </div>
+          </li>
+          <li class="group relative">
+            <a
+              href="/#technology"
+              class="relative z-10 opacity-75 hover:opacity-100">Technology</a
+            >
+            <div
+              aria-hidden="true"
+              class="absolute -inset-x-2 -inset-y-0.5 z-0 rounded-sm bg-white/15 opacity-0 transition group-hover:opacity-100"
+            >
+            </div>
+          </li>
+          <li class="group relative">
+            <a
+              href="/#testimonials"
+              class="relative z-10 opacity-75 hover:opacity-100">Testimonials</a
+            >
+            <div
+              aria-hidden="true"
+              class="absolute -inset-x-2 -inset-y-0.5 z-0 rounded-sm bg-white/15 opacity-0 transition group-hover:opacity-100"
+            >
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-body-lg mb-6">Contact Information</h4>
+        <ul class="text-body-md gap-gutter flex flex-wrap font-light">
+          <li class="group relative flex items-center gap-2">
+            <MailIcon />
+            <a
+              href="mailto:nanorestorationsgroup@gmail.com"
+              class="relative z-10 opacity-75 hover:opacity-100"
+              >nanorestorationsgroup@gmail.com</a
+            >
+            <div
+              aria-hidden="true"
+              class="absolute -inset-x-2 -inset-y-0.5 z-0 rounded-sm bg-white/15 opacity-0 transition group-hover:opacity-100"
+            >
+            </div>
+          </li>
+          <li class="group relative flex items-center gap-2">
+            <PhoneIcon />
+            <a
+              href="tel:+17705617436"
+              class="relative z-10 opacity-75 hover:opacity-100"
+              >+1 770-561-7436</a
+            >
+            <div
+              aria-hidden="true"
+              class="absolute -inset-x-2 -inset-y-0.5 z-0 rounded-sm bg-white/15 opacity-0 transition group-hover:opacity-100"
+            >
+            </div>
+          </li>
+          <li class="group relative flex items-center gap-2">
+            <LocationIcon />
+            <a href="/" class="relative z-10 opacity-75 hover:opacity-100"
+              >Atlanta, GA, United States, Georgia</a
+            >
+            <div
+              aria-hidden="true"
+              class="absolute -inset-x-2 -inset-y-0.5 z-0 rounded-sm bg-white/15 opacity-0 transition group-hover:opacity-100"
+            >
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="gap-gutter flex flex-wrap items-center justify-between">
+      <p class="opacity-80">
+        Nano Restorations Group LLC © 2025. All rights reserved.
+      </p>
+      <Erre />
+    </div>
+  </div>
+  <div class="p-page bg-brand-950">
+    <LogoHorizontal class="h-full w-full" />
+  </div>
 </footer>

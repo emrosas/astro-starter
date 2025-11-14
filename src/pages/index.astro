@@ -1,65 +1,50 @@
 ---
-import Layout from "../layouts/Layout.astro";
+import Layout from '../layouts/Layout.astro'
+
+import { Image } from 'astro:assets'
+
+import heroImage from '../assets/images/hero.png'
 ---
 
-<Layout title="Astro Starter" description="A minimal Astro Starter template.">
-  <main class="px-page">
-    <h1 class="mb-3 text-2xl">
-      Use this as a starting point for your projects.
-    </h1>
-    <p class="mb-2 text-lg">
-      This template includes the following technologies:
-    </p>
-    <ul class="list-inside list-disc space-y-2">
-      <li>
-        [Astro]<a
-          href="https://astro.build/"
-          class="text-sky-600 underline hover:text-sky-500"
-          >(https://astro.build/)</a
+<Layout
+  description="We provide homes in Georgia with advanced property restoration using cutting-edge nanotechnology."
+>
+  <main class="grow">
+    <header
+      class="bg-brand-950 gap-gutter grid min-h-screen text-white md:grid-cols-2"
+    >
+      <div
+        class="px-page flex flex-col items-start justify-center pt-20 md:pt-24"
+      >
+        <h1 class="text-title-lg mb-4">
+          Advanced nano-technology solutions for home restoration and cleaning.
+        </h1>
+        <p class="text-body-lg mb-8 font-light opacity-75">
+          Our Georgia-based services use advanced technology that doesn’t just
+          fix damage — it makes your property stronger, safer, and resistant to
+          future threats.
+        </p>
+        <a
+          href="/"
+          class="bg-brand-700 w-full rounded-lg px-5 py-4 text-center leading-none text-white md:w-auto"
+          >Get a Quote</a
         >
-      </li>
-      <li>
-        [Astro Icon]<a
-          href="https://github.com/astro-community/astro-icon"
-          class="text-sky-600 underline hover:text-sky-500"
-          >(https://github.com/astro-community/astro-icon)</a
-        >
-      </li>
-      <li>
-        [Astro SEO]<a
-          href="https://github.com/brillout/astro-seo"
-          class="text-sky-600 underline hover:text-sky-500"
-          >(https://github.com/brillout/astro-seo)</a
-        >
-      </li>
-      <li>
-        [TailwindCSS]<a
-          href="https://tailwindcss.com/"
-          class="text-sky-600 underline hover:text-sky-500"
-          >(https://tailwindcss.com/)</a
-        >
-      </li>
-      <li>
-        [Fluid Tailwind]<a
-          href="https://github.com/FluidUI/fluid-tailwind"
-          class="text-sky-600 underline hover:text-sky-500"
-          >(https://github.com/FluidUI/fluid-tailwind)</a
-        >
-      </li>
-      <li>
-        [Prettier]<a
-          href="https://prettier.io/"
-          class="text-sky-600 underline hover:text-sky-500"
-          >(https://prettier.io/)</a
-        >
-      </li>
-      <li>
-        [TypeScript]<a
-          href="https://www.typescriptlang.org/"
-          class="text-sky-600 underline hover:text-sky-500"
-          >(https://www.typescriptlang.org/)</a
-        >
-      </li>
-    </ul>
+      </div>
+      <Image
+        src={heroImage}
+        alt="Hero Image"
+        class="h-full w-full object-cover"
+      />
+    </header>
+    <!-- About Section -->
+    <section id="about" class="min-h-96"></section>
+    <!-- Services Section -->
+    <section id="services" class="min-h-96"></section>
+    <!-- Technology Section -->
+    <section id="technology" class="min-h-96"></section>
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="min-h-96"></section>
+    <!-- Contact Section -->
+    <section id="contact" class="min-h-96"></section>
   </main>
 </Layout>
