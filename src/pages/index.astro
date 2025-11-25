@@ -1,5 +1,6 @@
 ---
-import Layout from "../layouts/Layout.astro";
+import Button from '../components/Button.astro'
+import Layout from '../layouts/Layout.astro'
 ---
 
 <Layout title="Astro Starter" description="A minimal Astro Starter template.">
@@ -40,10 +41,10 @@ import Layout from "../layouts/Layout.astro";
         >
       </li>
       <li>
-        [Fluid Tailwind]<a
-          href="https://github.com/FluidUI/fluid-tailwind"
+        [Tailwind Variants]<a
+          href="https://www.tailwind-variants.org/docs/getting-started"
           class="text-sky-600 underline hover:text-sky-500"
-          >(https://github.com/FluidUI/fluid-tailwind)</a
+          >(https://www.tailwind-variants.org/docs/getting-started)</a
         >
       </li>
       <li>
@@ -61,5 +62,6 @@ import Layout from "../layouts/Layout.astro";
         >
       </li>
     </ul>
+    <Button class="mt-4">Click Me</Button>
   </main>
 </Layout>
