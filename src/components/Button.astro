@@ -3,23 +3,35 @@ import { tv, type VariantProps } from 'tailwind-variants/lite'
 import type { HTMLAttributes } from 'astro/types'
 
 const button = tv({
-  base: 'font-semibold text-white text-sm py-1 px-4 rounded-full active:opacity-80 cursor-pointer',
+  base: 'text-xl py-3 px-5 rounded-lg active:opacity-80 cursor-pointer transition shrink-0 text-center',
   variants: {
     color: {
-      primary: 'bg-blue-500 hover:bg-blue-700',
-      secondary: 'bg-purple-500 hover:bg-purple-700',
-      success: 'bg-green-500 hover:bg-green-700',
+      primary: 'bg-brand-500 hover:bg-brand-600 text-white',
+      secondary: 'bg-alt-600 hover:bg-alt-700',
+      ghost: 'bg-transparent hover:bg-brand-500/25 border border-inherit',
     },
   },
 })
 
-export interface Props
-  extends HTMLAttributes<'button'>,
-    VariantProps<typeof button> {
+type ComponentStyles = VariantProps<typeof button> & {
   color?: keyof typeof button.variants.color
 }
 
-const { color = 'primary', class: className } = Astro.props
+type ButtonProps = {
+  href?: undefined
+} & HTMLAttributes<'button'>
+
+type AnchorProps = {
+  href: string
+} & HTMLAttributes<'a'>
+
+export type Props =
+  | (ButtonProps & ComponentStyles)
+  | (AnchorProps & ComponentStyles)
+
+const { color = 'primary', class: className, href } = Astro.props as Props
+
+const Element = href ? 'a' : 'button'
 ---
 
-<button class={button({ color, className })}><slot /></button>
+<Element href={href} class={button({ color, className })}><slot /></Element>
