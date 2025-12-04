@@ -1,21 +1,21 @@
 ---
 // Head
-import { Font } from "astro:assets";
-import { SEO } from "astro-seo";
+import { Font } from 'astro:assets'
+import { SEO } from 'astro-seo'
 
 // Components
-import Navbar from "../components/Navbar.astro";
-import Footer from "../components/Footer.astro";
+import Navbar from '../components/Navbar.astro'
+import Footer from '../components/Footer.astro'
 
 // Styles
-import "../styles/global.css";
+import '../styles/global.css'
 
 // Props
 interface Props {
-  title: string;
-  description: string;
+  title: string
+  description: string
 }
-const { title, description } = Astro.props;
+const { title, description } = Astro.props
 ---
 
 <!doctype html>
@@ -31,13 +31,13 @@ const { title, description } = Astro.props;
       openGraph={{
         basic: {
           title:
-            "A starter template to create Astro projects faster. Packed with bare minimum features to get the most out of Astro.",
-          image: "",
-          type: "website",
+            'A starter template to create Astro projects faster. Packed with bare minimum features to get the most out of Astro.',
+          image: '',
+          type: 'website',
         },
       }}
       extend={{
-        link: [{ rel: "icon", href: "/favicon.svg", type: "image/svg+xml" }],
+        link: [{ rel: 'icon', href: '/favicon.svg', type: 'image/svg+xml' }],
       }}
     />
   </head>
@@ -45,5 +45,6 @@ const { title, description } = Astro.props;
     <Navbar />
     <slot />
     <Footer />
+    <script src="../lib/main.ts"></script>
   </body>
 </html>

@@ -19,19 +19,28 @@ type ComponentStyles = VariantProps<typeof button> & {
 
 type ButtonProps = {
   href?: undefined
+  type?: 'button' | 'submit' | 'reset'
 } & HTMLAttributes<'button'>
 
 type AnchorProps = {
   href: string
+  type?: undefined
 } & HTMLAttributes<'a'>
 
 export type Props =
   | (ButtonProps & ComponentStyles)
   | (AnchorProps & ComponentStyles)
 
-const { color = 'primary', class: className, href } = Astro.props as Props
+const {
+  color = 'primary',
+  class: className,
+  href,
+  ...rest
+} = Astro.props as Props
 
 const Element = href ? 'a' : 'button'
 ---
 
-<Element href={href} class={button({ color, className })}><slot /></Element>
+<Element {...rest} href={href} class={button({ color, className })}
+  ><slot /></Element
+>

@@ -1,5 +1,5 @@
 ---
-
+import Button from '../components/Button.astro'
 ---
 
 <nav class="p-page gap-gutter flex items-center justify-between">
@@ -7,5 +7,16 @@
     href="/"
     class="rounded-md bg-sky-500 p-4 py-2 text-2xl font-medium text-white"
     >Astro Starter</a
+  >
+  <ul
+    id="menu"
+    class="p-page fixed top-1/2 right-4 hidden rounded-xl border border-black/15 bg-white data-open:block"
+  >
+    <li>First</li>
+    <li>Second</li>
+    <li>Third</li>
+  </ul>
+  <Button aria-expanded="false" aria-controls="menu" id="menu-button"
+    >Open Menu</Button
   >
 </nav>
