@@ -5,7 +5,7 @@ import type { HTMLAttributes } from 'astro/types'
 const button = tv({
   base: 'text-xl py-3 px-5 rounded-lg active:opacity-80 cursor-pointer transition shrink-0 text-center',
   variants: {
-    color: {
+    intent: {
       primary: 'bg-brand-500 hover:bg-brand-600 text-white',
       secondary: 'bg-alt-600 hover:bg-alt-700',
       ghost: 'bg-transparent hover:bg-brand-500/25 border border-inherit',
@@ -14,7 +14,7 @@ const button = tv({
 })
 
 type ComponentStyles = VariantProps<typeof button> & {
-  color?: keyof typeof button.variants.color
+  intent?: keyof typeof button.variants.intent
 }
 
 type ButtonProps = {
@@ -32,7 +32,7 @@ export type Props =
   | (AnchorProps & ComponentStyles)
 
 const {
-  color = 'primary',
+  intent = 'primary',
   class: className,
   href,
   ...rest
@@ -41,6 +41,6 @@ const {
 const Element = href ? 'a' : 'button'
 ---
 
-<Element {...rest} href={href} class={button({ color, className })}
+<Element {...rest} href={href} class={button({ intent, className })}
   ><slot /></Element
 >
