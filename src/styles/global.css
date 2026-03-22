@@ -13,13 +13,12 @@
   --color-brand-800: #292929;
   --color-brand-900: #1f1f1f;
   --color-brand-950: #141414;
-  --color-alt-1: #d83232;
-  --color-alt-2: #ab2121;
 
   /* Font Variables */
   --font-body: var(--font-geist);
   /* Clamps go from 1024px to 640px */
   /* Text Variables */
+  --text-title-xl: clamp(3.5rem, 1rem + 6.25vw, 5rem);
   --text-title-lg: clamp(3rem, 1.3333rem + 4.1667vw, 4rem);
   --text-title-md: clamp(1.75rem, -0.3333rem + 5.2083vw, 3rem);
   --text-title-sm: clamp(1.5rem, 0.25rem + 3.125vw, 2.25rem);
@@ -27,6 +26,7 @@
   --text-body-lg: clamp(1.125rem, 0.5rem + 1.5625vw, 1.5rem);
   --text-body-md: clamp(1rem, 0.7917rem + 0.5208vw, 1.125rem);
   --text-body-sm: clamp(0.75rem, 0.5417rem + 0.5208vw, 0.875rem);
+  --text-body-xs: clamp(0.625rem, 0.4167rem + 0.5208vw, 0.75rem);
 
   /* Clamps go from 1024px to 640px */
   /* Spacing variables */
@@ -36,6 +36,11 @@
   --spacing-section-lg: clamp(7.5rem, 3.3333rem + 10.4167vw, 10rem);
   --spacing-section-md: clamp(5rem, 3.3333rem + 4.1667vw, 6rem);
   --spacing-section-sm: clamp(3rem, 1.3333rem + 4.1667vw, 4rem);
+  --spacing-el-xl: clamp(2rem, 0.3333rem + 4.1667vw, 3rem);
+  --spacing-el-lg: clamp(1.25rem, 3.125vw, 2rem);
+  --spacing-el-md: clamp(0.75rem, -0.0833rem + 2.0833vw, 1.25rem);
+  --spacing-el-sm: clamp(0.5rem, 0.0833rem + 1.0417vw, 0.75rem);
+  --spacing-el-xs: clamp(0.25rem, -0.1667rem + 1.0417vw, 0.5rem);
 }
 
 @custom-variant aria-page (&[aria-current="page"]);
