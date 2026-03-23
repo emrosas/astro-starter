@@ -53,28 +53,30 @@
   navigation: auto;
 }
 
-nav {
-  view-transition-name: nav;
-}
+@layer base {
+  nav {
+    view-transition-name: nav;
+  }
 
-body {
-  @apply font-body text-brand-950 bg-white tracking-tight;
-}
+  body {
+    @apply font-body text-brand-950 bg-white tracking-tight;
+  }
 
-h1,
-h2 {
-  @apply leading-tight font-medium;
-}
+  h1,
+  h2 {
+    @apply leading-tight font-medium;
+  }
 
-p {
-  @apply leading-relaxed;
-}
+  p {
+    @apply leading-relaxed;
+  }
 
-.no-scrollbars {
-  scrollbar-width: none; /* For Firefox */
-  -ms-overflow-style: none; /* For Internet Explorer and Edge */
-}
+  .no-scrollbars {
+    scrollbar-width: none; /* For Firefox */
+    -ms-overflow-style: none; /* For Internet Explorer and Edge */
+  }
 
-.no-scrollbars::-webkit-scrollbar {
-  display: none; /* For Chrome, Safari, and Opera */
+  .no-scrollbars::-webkit-scrollbar {
+    display: none; /* For Chrome, Safari, and Opera */
+  }
 }
