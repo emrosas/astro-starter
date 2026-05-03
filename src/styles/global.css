@@ -1,23 +1,49 @@
 @import 'tailwindcss';
 
 @theme {
-  /* Color variables */
-  --color-brand-50: #fafafa;
-  --color-brand-100: #f2f2f2;
-  --color-brand-200: #d6d6d6;
-  --color-brand-300: #b8b8b8;
-  --color-brand-400: #a3a3a3;
-  --color-brand-500: #5c5c5c;
-  --color-brand-600: #474747;
-  --color-brand-700: #333333;
-  --color-brand-800: #292929;
-  --color-brand-900: #1f1f1f;
-  --color-brand-950: #141414;
+  /* ── Alias layer: primary (blue) ─────────────────────────────────── */
+  --color-primary-50: #eff6ff;
+  --color-primary-100: #dbeafe;
+  --color-primary-200: #bfdbfe;
+  --color-primary-300: #93c5fd;
+  --color-primary-400: #60a5fa;
+  --color-primary-500: #3b82f6;
+  --color-primary-600: #2563eb;
+  --color-primary-700: #1d4ed8;
+  --color-primary-800: #1e40af;
+  --color-primary-900: #1e3a8a;
+  --color-primary-950: #172554;
 
-  /* Font Variables */
+  /* ── Alias layer: neutral (grayscale / luz) ──────────────────────── */
+  --color-neutral-50: #fafafa;
+  --color-neutral-100: #f2f2f2;
+  --color-neutral-200: #d6d6d6;
+  --color-neutral-300: #b8b8b8;
+  --color-neutral-400: #a3a3a3;
+  --color-neutral-500: #5c5c5c;
+  --color-neutral-600: #474747;
+  --color-neutral-700: #333333;
+  --color-neutral-800: #292929;
+  --color-neutral-900: #1f1f1f;
+  --color-neutral-950: #141414;
+
+  /* ── Alias layer: error (red) ────────────────────────────────────── */
+  --color-error-50: #fef2f2;
+  --color-error-100: #fee2e2;
+  --color-error-200: #fecaca;
+  --color-error-300: #fca5a5;
+  --color-error-400: #f87171;
+  --color-error-500: #ef4444;
+  --color-error-600: #dc2626;
+  --color-error-700: #b91c1c;
+  --color-error-800: #991b1b;
+  --color-error-900: #7f1d1d;
+  --color-error-950: #450a0a;
+
+  /* ── Font ────────────────────────────────────────────────────────── */
   --font-body: var(--font-geist);
-  /* Clamps go from 1024px to 640px */
-  /* Text Variables */
+
+  /* ── Typography scale (fluid: 640px → 1024px) ───────────────────── */
   --text-title-xl: clamp(3.5rem, 1rem + 6.25vw, 5rem);
   --text-title-lg: clamp(3rem, 1.3333rem + 4.1667vw, 4rem);
   --text-title-md: clamp(1.75rem, -0.3333rem + 5.2083vw, 3rem);
@@ -28,8 +54,7 @@
   --text-body-sm: clamp(0.75rem, 0.5417rem + 0.5208vw, 0.875rem);
   --text-body-xs: clamp(0.625rem, 0.4167rem + 0.5208vw, 0.75rem);
 
-  /* Clamps go from 1024px to 640px */
-  /* Spacing variables */
+  /* ── Spacing scale (fluid: 640px → 1024px) ──────────────────────── */
   --spacing-page: clamp(1rem, -2.3333rem + 8.3333vw, 3rem);
   --spacing-gutter: clamp(1.5rem, -0.1667rem + 4.1667vw, 2.5rem);
   --spacing-double: calc(var(--spacing-page) * 2);
@@ -48,7 +73,6 @@
 @custom-variant aria-expanded (&[aria-expanded="true"]);
 @custom-variant data-open (&[data-open="true"]);
 
-/* View transitions */
 @view-transition {
   navigation: auto;
 }
@@ -59,7 +83,7 @@
   }
 
   body {
-    @apply font-body text-brand-950 bg-white tracking-tight;
+    @apply font-body text-neutral-950 bg-white tracking-tight;
   }
 
   h1,
@@ -72,11 +96,11 @@
   }
 
   .no-scrollbars {
-    scrollbar-width: none; /* For Firefox */
-    -ms-overflow-style: none; /* For Internet Explorer and Edge */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
   }
 
   .no-scrollbars::-webkit-scrollbar {
-    display: none; /* For Chrome, Safari, and Opera */
+    display: none;
   }
 }
