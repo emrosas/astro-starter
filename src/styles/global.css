@@ -55,6 +55,7 @@
   --text-body-xs: clamp(0.625rem, 0.4167rem + 0.5208vw, 0.75rem);
 
   /* ── Spacing scale (fluid: 640px → 1024px) ──────────────────────── */
+  --spacing-container: 90rem;
   --spacing-page: clamp(1rem, -2.3333rem + 8.3333vw, 3rem);
   --spacing-gutter: clamp(1.5rem, -0.1667rem + 4.1667vw, 2.5rem);
   --spacing-double: calc(var(--spacing-page) * 2);
@@ -102,5 +103,9 @@
 
   .no-scrollbars::-webkit-scrollbar {
     display: none;
+  }
+
+  .contained {
+      @apply max-w-container mx-auto
   }
 }
